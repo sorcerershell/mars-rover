@@ -5,7 +5,7 @@ import marsrover.MarsRover;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MarRoverTest {
+public class MarsRoverTest {
     @Test
     public void it_ShouldBe_PositionedAt_0_0_And_FaceNorth() {
         MarsRover marsRover = new MarsRover(Coordinate.at(0, 0), Direction.NORTH(), new Grid(100, 100));
