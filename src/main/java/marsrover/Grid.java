@@ -9,6 +9,10 @@ public class Grid {
         this.height = height;
     }
 
+    public static Grid create(int width, int height) {
+        return new Grid(width, height);
+    }
+
     public int getWidth() {
         return width;
     }

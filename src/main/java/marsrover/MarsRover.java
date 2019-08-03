@@ -3,27 +3,28 @@ package marsrover;
 public class MarsRover {
     public static final int RIGHT_DEGREE = 90;
     public static final int LEFT_DEGREE = -90;
+
     public static final String COMMAND_FORWARD = "f";
     private static final String COMMAND_BACKWARD = "b";
     private static final String COMMAND_RIGHT = "r";
     private static final String COMMAND_LEFT = "l";
 
-    private Coordinate position;
+    private Location location;
     private Direction direction;
     private Grid grid;
 
-    public MarsRover(Coordinate position, Direction direction, Grid grid) {
-        this.position = position;
+    public MarsRover(Location location, Direction direction, Grid grid) {
+        this.location = location;
         this.direction = direction;
         this.grid = grid;
     }
 
-    public Coordinate getPosition() {
-        return position;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setPosition(Coordinate position) {
-        this.position = position;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public Direction getDirection() {
@@ -53,25 +54,31 @@ public class MarsRover {
     public void runCommand(String commands) {
         String[] commandList = commands.split("");
         for (String command: commandList) {
-            if (command.equals(MarsRover.COMMAND_FORWARD)) {
+            runSingleCommand(command);
+        }
+    }
+
+    private void runSingleCommand(String command) {
+        switch (command) {
+            case MarsRover.COMMAND_FORWARD:
                 this.moveForward();
-            }
-
-            if (command.equals(MarsRover.COMMAND_BACKWARD)) {
+                break;
+            case MarsRover.COMMAND_BACKWARD:
                 this.moveBackward();
-            }
-            
-            if (command.equals(MarsRover.COMMAND_RIGHT)) {
-                this.rotateRight();
-            }
-            if (command.equals(MarsRover.COMMAND_LEFT)) {
+                break;
+            case MarsRover.COMMAND_LEFT:
                 this.rotateLeft();
-            }
-
+                break;
+            case MarsRover.COMMAND_RIGHT:
+                this.rotateRight();
+                break;
+            default:
+                break;
         }
     }
 
     public void moveForward() {
+
         if (this.direction.equals(Direction.SOUTH())) {
             this.moveToSouth();
         }
@@ -113,8 +120,8 @@ public class MarsRover {
     }
 
     public void moveToSouth(int step) {
-        int currentPosition = this.position.getY();
-        this.position.setY(currentPosition+step);
+        int currentPosition = this.location.getY();
+        this.location.setY(currentPosition+step);
     }
 
     public void moveToNorth() {
@@ -122,8 +129,8 @@ public class MarsRover {
     }
 
     public void moveToNorth(int step) {
-        int currentPosition = this.position.getY();
-        this.position.setY(currentPosition-step);
+        int currentPosition = this.location.getY();
+        this.location.setY(currentPosition-step);
     }
 
     public void moveToWest() {
@@ -131,8 +138,8 @@ public class MarsRover {
     }
 
     public void moveToWest(int step) {
-        int currentPosition = this.position.getX();
-        this.position.setX(currentPosition-step);
+        int currentPosition = this.location.getX();
+        this.location.setX(currentPosition-step);
     }
 
 
@@ -141,8 +148,8 @@ public class MarsRover {
     }
 
     public void moveToEast(int step) {
-        int currentPosition = this.position.getX();
-        this.position.setX(currentPosition+step);
+        int currentPosition = this.location.getX();
+        this.location.setX(currentPosition+step);
     }
 
 }

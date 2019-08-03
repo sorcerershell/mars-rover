@@ -1,16 +1,16 @@
 package marsrover;
 
-public class Coordinate {
+public class Location {
     public int x;
     public int y;
 
-    public Coordinate(int x, int y) {
+    public Location(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public static Coordinate at(int x, int y) {
-        return new Coordinate(x, y);
+    public static Location at(int x, int y) {
+        return new Location(x, y);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Coordinate {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Coordinate that = (Coordinate) o;
+        Location that = (Location) o;
 
         if (x != that.x) return false;
         return y == that.y;

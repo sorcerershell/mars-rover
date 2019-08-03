@@ -25,4 +25,4 @@ obstacle the rover moves up to the last possible point and reports the obstacle.
 
 
 ## ChangeLogs
-- 03-08-2019: First Implementation. All commands should be works but the position still have no validation.
+- 03-08-2019: First Implementation. All commands should be works but the location still have no validation.
